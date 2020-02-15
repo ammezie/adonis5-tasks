@@ -1,0 +1,70 @@
+@layout('layouts.app')
+
+@section('content')
+  <div class="box">
+    <h2 class="title">New Task</h2>
+
+    <form action="/tasks" method="POST">
+      <div class="field has-addons">
+        <div class="control is-expanded">
+          <input class="input" type="text" name="title" placeholder="Task title">
+        </div>
+        <div class="control">
+          <button type="submit" class="button is-primary">
+              Add Task
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!--  flash message  -->
+
+  <div class="box">
+    <h1 class="title">Tasks</h1>
+
+    <table class="table is-bordered is-striped is-narrow is-fullwidth">
+      <thead>
+        <tr>
+          <th>SN</th>
+          <th>Title</th>
+          <th colspan="2">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        @each(task in tasks)
+          <tr>
+            <td>
+              {{ ($loop.index + 1) }}
+            </td>
+            <td>
+              {{ task.title }}
+            </td>
+            <td>
+              <form action="{{ 'tasks/' + task.id + '?_method=PATCH' }}" method="POST">
+                <button type="submit" class="button is-success is-outlined">
+                  <span class="icon is-small">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                  </span>
+                </button>
+              </form>
+            </td>
+            <td>
+              <form action="{{ 'tasks/' + task.id + '?_method=DELETE' }}" method="POST">
+                <button type="submit" class="button is-danger is-outlined">
+                  <span class="icon is-small">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                  </span>
+                </button>
+              </form>
+            </td>
+          </tr>
+        @else
+          <tr>
+            <td colspan="3" class="has-text-centered">No task created yet!</td>
+          </tr>
+        @endeach
+      </tbody>
+    </table>
+  </div>
+@endsection

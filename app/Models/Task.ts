@@ -19,6 +19,6 @@ export default class Task extends BaseModel {
 
   public static $columns: Pick<
     Task,
-    'id' | 'title' | 'createdAt' | 'updatedAt'
+    'id' | 'createdAt' | 'updatedAt'
   >
 }

@@ -18,6 +18,16 @@
 |
 */
 
+// import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.on('/').render('welcome')
+// Route.on('/').render('tasks/index')
+
+// Route.get('/', async ({ view }: HttpContextContract) => {
+//   return view.render('tasks.index')
+// })
+
+Route.get('/', 'TasksController.index')
+Route.post('tasks', 'TasksController.store')
+Route.patch('tasks/:id', 'TasksController.update')
+Route.destroy('tasks/:id', 'TasksController.destroy')
