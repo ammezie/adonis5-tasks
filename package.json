@@ -21,10 +21,12 @@
     "@adonisjs/ace": "^6.8.3",
     "@adonisjs/core": "^2.10.1",
     "@adonisjs/fold": "^6.3.3",
+    "@adonisjs/lucid": "^7.5.0",
     "@adonisjs/session": "^2.3.1",
     "@adonisjs/view": "^1.0.9",
     "proxy-addr": "^2.0.5",
     "reflect-metadata": "^0.1.13",
-    "source-map-support": "^0.5.16"
+    "source-map-support": "^0.5.16",
+    "sqlite3": "^4.1.1"
   }
 }
