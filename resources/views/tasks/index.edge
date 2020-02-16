@@ -41,6 +41,7 @@
               {{ task.title }}
             </td>
             <td>
+              <!-- For this, you will have to enable method spoofing -->
               <form action="{{ 'tasks/' + task.id + '?_method=PATCH' }}" method="POST">
                 <button type="submit" class="button is-success is-outlined">
                   <span class="icon is-small">

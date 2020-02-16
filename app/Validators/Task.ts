@@ -22,6 +22,7 @@ class TaskValidator {
    *    ```
    */
   public schema = validator.compile(schema.create({
+    title: schema.string(),
   }))
 
   /**
@@ -34,7 +35,9 @@ class TaskValidator {
    *   'scores.*.number': 'Define scores as valid numbers'
    * }
   */
-  public messages = {}
+  public messages = {
+    'title.required': 'Enter task title',
+  }
 }
 
 export default new TaskValidator()

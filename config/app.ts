@@ -49,7 +49,7 @@ export const http: HttpOptions = {
   | so on.
   |
   */
-  allowMethodSpoofing: false,
+  allowMethodSpoofing: true,
 
   /*
   |--------------------------------------------------------------------------
