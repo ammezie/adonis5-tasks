@@ -8,8 +8,12 @@ export default class Task extends BaseModel {
   @column()
   public title: string
 
+  /**
+   * @virk
+   * Let's keep everything in camelCase in our codebase
+   */
   @column()
-  public is_completed: boolean
+  public isCompleted: boolean
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
@@ -17,8 +21,13 @@ export default class Task extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
 
+  /**
+   * @virk
+   * The follows statement makes sure that `Task.create` method
+   * should only allow the following properties.
+   */
   public static $columns: Pick<
     Task,
-    'id' | 'createdAt' | 'updatedAt'
+    'id' | 'createdAt' | 'updatedAt' | 'title' | 'isCompleted'
   >
 }
