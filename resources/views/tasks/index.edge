@@ -7,7 +7,7 @@
     <form action="/tasks" method="POST">
       <div class="field has-addons">
         <div class="control is-expanded">
-          <input class="input" type="text" name="title" placeholder="Task title">
+          <input class="input" type="text" name="title" value="{{ flashMessages.get('title') || '' }}" placeholder="Task title">
         </div>
         <div class="control">
           <button type="submit" class="button is-primary">
@@ -15,10 +15,20 @@
           </button>
         </div>
       </div>
+
+      @if (flashMessages.has('errors.title'))
+        <p class="help is-danger">
+          {{ flashMessages.get('errors.title') }}
+        </p>
+      @endif
     </form>
   </div>
 
-  <!--  flash message  -->
+  @if (flashMessages.has('notification'))
+    <div class="notification is-success">
+      {{ flashMessages.get('notification') }}
+    </div>
+  @endif
 
   <div class="box">
     <h1 class="title">Tasks</h1>
@@ -41,7 +51,6 @@
               {{ task.title }}
             </td>
             <td>
-              <!-- For this, you will have to enable method spoofing -->
               <form action="{{ 'tasks/' + task.id + '?_method=PATCH' }}" method="POST">
                 <button type="submit" class="button is-success is-outlined">
                   <span class="icon is-small">
