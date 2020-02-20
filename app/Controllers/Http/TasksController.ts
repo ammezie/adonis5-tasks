@@ -25,7 +25,7 @@ export default class TasksController {
     task.isCompleted = true
     await task.save()
 
-    session.flash({ notification: 'Task updated!' })
+    session.flash({ notification: 'Task completed!' })
 
     return response.redirect('back')
   }

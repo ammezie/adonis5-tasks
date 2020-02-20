@@ -20,7 +20,7 @@ const staticConfig: AssetsConfig = {
   |
   |
   */
-  enabled: false,
+  enabled: true,
 
   /*
   |--------------------------------------------------------------------------
@@ -48,7 +48,6 @@ const staticConfig: AssetsConfig = {
   |
   */
   etag: true,
-
 
   /*
   |--------------------------------------------------------------------------
