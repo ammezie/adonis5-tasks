@@ -27,6 +27,7 @@
     "proxy-addr": "^2.0.5",
     "reflect-metadata": "^0.1.13",
     "source-map-support": "^0.5.16",
-    "sqlite3": "^4.1.1"
+    "sqlite3": "^4.1.1",
+    "url-parse": "^1.4.7"
   }
 }

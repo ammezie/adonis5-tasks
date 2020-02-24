@@ -5,10 +5,13 @@
  * file.
  */
 
-import Env from '@ioc:Adonis/Core/Env'
 import Application from '@ioc:Adonis/Core/Application'
-import { OrmConfigContract } from '@ioc:Adonis/Lucid/Orm'
+import Env from '@ioc:Adonis/Core/Env'
 import { DatabaseConfigContract } from '@ioc:Adonis/Lucid/Database'
+import { OrmConfigContract } from '@ioc:Adonis/Lucid/Orm'
+import Url from 'url-parse'
+
+const databaseUrl = new Url(Env.get('CLEARDB_DATABASE_URL'))
 
 const databaseConfig: DatabaseConfigContract & { orm: Partial<OrmConfigContract> } = {
   /*
@@ -58,11 +61,11 @@ const databaseConfig: DatabaseConfigContract & { orm: Partial<OrmConfigContract>
     mysql: {
       client: 'mysql',
       connection: {
-        host: Env.get('DB_HOST', '127.0.0.1') as string,
-        port: Number(Env.get('DB_PORT', 3306)),
-        user: Env.get('DB_USER', 'lucid') as string,
-        password: Env.get('DB_PASSWORD', 'lucid') as string,
-        database: Env.get('DB_NAME', 'lucid') as string,
+        host: Env.get('DB_HOST', databaseUrl.host) as string,
+        port: Number(Env.get('DB_PORT', '')),
+        user: Env.get('DB_USER', databaseUrl.username) as string,
+        password: Env.get('DB_PASSWORD', databaseUrl.password) as string,
+        database: Env.get('DB_NAME', databaseUrl.pathname) as string,
       },
       healthCheck: false,
     },
