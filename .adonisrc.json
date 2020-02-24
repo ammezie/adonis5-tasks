@@ -16,9 +16,11 @@
     "./start/kernel"
   ],
   "metaFiles": [
+    ".env",
     ".adonisrc.json",
     ".gitignore",
-    "resources/views/**/*.edge"
+    "resources/views/**/*.edge",
+    "public/**"
   ],
   "providers": [
     "@adonisjs/core",
